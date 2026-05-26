@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "karpathy-quant"
+version = "0.1.0"
+description = "LLM-driven trading signal discovery and validation"
+requires-python = ">=3.11"
+dependencies = [
+    "yfinance>=0.2",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+    "pyarrow>=14.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=1.0"]
+all = ["google-genai>=1.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "ruff>=0.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "integration: requires network or API keys",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "T20"]
