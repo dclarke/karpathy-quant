@@ -22,6 +22,7 @@ async def main() -> None:
     config = RunConfig(
         symbol="AAPL",
         iterations=50,
+        hypotheses_per_call=1,
         provider="gemini",
         hold_days=5,
         data_period="5y",
